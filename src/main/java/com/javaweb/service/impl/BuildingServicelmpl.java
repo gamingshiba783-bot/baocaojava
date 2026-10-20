@@ -13,6 +13,7 @@ import com.javaweb.converter.BuildingSearchConverter;
 import com.javaweb.model.buildingbean;
 import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.entity.Buildingentity;
+import com.javaweb.repository.impl.JDBCBuildingRepositorylmpl;
 import com.javaweb.service.Buildingservice;
 
 @Service
@@ -23,11 +24,13 @@ public class BuildingServicelmpl implements Buildingservice{
 	private BuildingDTOConverter buildingDTOConverter;
 	@Autowired
 	private BuildingSearchConverter buildingSearchConverter;
+	@Autowired
+	private JDBCBuildingRepositorylmpl buildingRepositorylmpl;
 	@Override
 	public List<buildingbean> search(Map<String,Object> params,List<String> typecode) {
 		// TODO Auto-generated method stub
 		BuildingSearchBuilder builder = buildingSearchConverter.toBuildingSearchBuilder(params, typecode);
-		List<Buildingentity> buildingentitys = buildingRepository.search(builder);
+		List<Buildingentity> buildingentitys = buildingRepositorylmpl.search(builder);
 		List<buildingbean> result=new ArrayList<buildingbean>();
 		for(Buildingentity item : buildingentitys) {
 

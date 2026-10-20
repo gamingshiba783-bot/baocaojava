@@ -22,10 +22,6 @@ public class Buildingentity {
 	private Long id;
 	@Column(name ="name")
 	private String name;
-	@Column(name ="rentarea")
-	private String rentArea;
-	@Column(name ="adress")
-	private String adress;
 	@Column(name ="numberofbasement")
 	private Integer numberofbasement;
 	@Column(name ="managername")
@@ -65,23 +61,11 @@ public class Buildingentity {
 	public void setDistrict(DistrictEntity district) {
 		this.district = district;
 	}
-	public String getRentArea() {
-		return rentArea;
-	}
-	public void setRentArea(String rentArea) {
-		this.rentArea = rentArea;
-	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getAdress() {
-		return adress;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
 	}
 	public Integer getNumberofbasement() {
 		return numberofbasement;

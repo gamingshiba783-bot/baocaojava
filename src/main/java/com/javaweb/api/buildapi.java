@@ -51,7 +51,6 @@ public class buildapi {
 	 public void postbuilding(@RequestBody buildingbean bean) {
 		 Buildingentity buildingentity = modelMapper.map(bean,Buildingentity.class);
 		 buildingentity.getName();
-		 buildingentity.getAdress();
 		 buildingentity.getManagername();
 		 entityManager.persist(buildingentity);
 		 System.out.println("thanh cong");

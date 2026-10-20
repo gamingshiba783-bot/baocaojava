@@ -27,7 +27,7 @@ public class BuildingRepositoryImpI implements BuildingRepository{
 //		return query.getResultList();
 		//sql native
 		String name = builder.getName();
-		StringBuilder sql = new StringBuilder("SELECT * FROM building b WHERE b.name ");
+		StringBuilder sql = new StringBuilder("SELECT * FROM building b WHERE 1=1 ");
 		String getname = "LIKE '%"+name+"%' ";
 		sql.append(getname);
 		Query query = entityManager.createNativeQuery(sql.toString(),Buildingentity.class);

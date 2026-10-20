@@ -61,21 +61,17 @@ public class JDBCBuildingRepositorylmpl implements BuildingRepository {
 	public static void queryspecial(BuildingSearchBuilder builder,StringBuilder where) {
 		Long staffid = builder.getStaffid();
 		if(staffid!=null) {
-			where.append(" AND EXISTS (SELECT * FROM assignmentbuilding ab WHERE b.id = ab.buildingid ");
 			where.append(" AND ab.staffid = "+staffid);
-			where.append(") ");
 		}
 		Long rentAreaTo = builder.getRentAreaTo();
 		Long rentAreaFrom = builder.getRentAreaFrom();
 		if(rentAreaFrom!=null || rentAreaTo!=null) {
-			where.append(" AND EXISTS (SELECT * FROM rentarea r WHERE b.id = r.buildingid ");
 			if(rentAreaFrom!=null) {
 				where.append(" AND r.value >= "+rentAreaFrom);
 			}
 			if(rentAreaTo!=null) {
 				where.append(" AND r.value <= "+rentAreaTo);
 			}
-			where.append(") ");
 		}
 		Long rentPriceTo = builder.getRentPriceTo();
 		Long rentPriceFrom = builder.getRentPriceFrom();
