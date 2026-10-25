@@ -1,5 +1,6 @@
 package com.javaweb.utils;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 public class MapUtil {
@@ -12,6 +13,9 @@ public class MapUtil {
 				obj = obj != "" ?Integer.valueOf(obj.toString()):null;
 			}else if(Tclass.getTypeName().equals("java.lang.String")) {
 				obj = obj.toString();
+			}else if(Tclass.equals(LocalDate.class)) {
+				obj = !obj.toString().isEmpty()? LocalDate.parse(obj.toString())
+			:null;			
 			}
 			return Tclass.cast(obj);
 			
