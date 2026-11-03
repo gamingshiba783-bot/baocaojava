@@ -6,5 +6,9 @@ import java.util.Map;
 import com.javaweb.model.BookDTO;
 
 public interface Booksevice {
-		List<BookDTO> find(Map<String,Object> params);
+
+	List<BookDTO> findAll(Map<String, Object> params);
+	void insertBook(BookDTO bookDTO);
+	void  updateBook(BookDTO bookDTO);
+	void deleteBook(BookDTO bookDTO);
 }

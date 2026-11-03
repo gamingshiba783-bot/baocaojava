@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.javaweb.repository.AuthorRepository;
+import com.javaweb.repository.CategoryRepository;
+import com.javaweb.repository.entity.AuthorEntity;
+import com.javaweb.repository.entity.PublisherEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,19 +24,54 @@ public class BookSeviceImpI implements Booksevice{
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
+	private AuthorRepository authorRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
+	@Autowired
 	private BookConverter bookConverter;
-	@Override
-	public List<BookDTO> find(Map<String, Object> params) {
+	public List<BookDTO> findAll(Map<String, Object> params) {
 		// TODO Auto-generated method stub
 		BookSearchBuilder Builder = new BookSearchConverter().tobBookSearchBuilder(params);
-		BookEntity bookEntities = bookRepository.findById(1L).get();
-		List<BookDTO> result = new ArrayList<BookDTO>();
-//		for(BookEntity item : bookEntities) {
-//			BookDTO books = bookConverter.tobook(item);
-//			result.add(books);
-//		}
+		List<BookEntity> bookEntities = bookRepository.findAll(Builder);
+		List<BookDTO> result = new ArrayList<>();
+		for(BookEntity item : bookEntities) {
+			BookDTO books = bookConverter.tobook(item);
+			result.add(books);
+		}
 		return result;
 	}
-		
-	
+
+	@Override
+	public void insertBook(BookDTO bookDTO) {
+		BookEntity bookEntity = new BookEntity();
+		bookEntity.setBookname(bookDTO.getBookname());
+		bookEntity.setBooktitle(bookDTO.getBooktitle());
+		bookEntity.setPublishyear(bookDTO.getPublishyear());
+		PublisherEntity publisherEntity = new PublisherEntity();
+		publisherEntity.setId(bookDTO.getPublisherid());
+		bookEntity.setPublisher(publisherEntity);
+		if (bookDTO.getAuthor() != null && !bookDTO.getAuthor().isEmpty()) {
+			Long authorId = Long.valueOf(bookDTO.getAuthor());
+			authorRepository.findById(authorId)
+					.ifPresent(a -> bookEntity.getAuthors().add(a));
+		}
+		Long categoryId = Long.valueOf(bookDTO.getCategory());
+		categoryRepository.findById(categoryId).ifPresent(e -> bookEntity.getCategorys().add(e));
+		bookRepository.save(bookEntity);
+		System.out.print("đã cập nhật");
+	}
+
+	@Override
+	public void updateBook(BookDTO bookDTO) {
+		BookEntity bookEntity = new BookEntity();
+		bookEntity.setBookname(bookDTO.getBookname());
+		bookEntity.setBooktitle(bookDTO.getBooktitle());
+		bookEntity.setPublishyear(bookDTO.getPublishyear());
+
+	}
+
+	@Override
+	public void deleteBook(BookDTO bookDTO) {
+
+	}
 }

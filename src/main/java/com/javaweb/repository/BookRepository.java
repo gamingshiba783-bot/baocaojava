@@ -11,5 +11,5 @@ import com.javaweb.repository.entity.BookEntity;
 
 public interface BookRepository extends JpaRepository<BookEntity, Long> ,BookRepositoryCustom{
 	void deleteByIdIn(Long[] ids);
-	List<BookEntity> findByBooknameContainingAndPublishyear(String name,Integer PublishYear );
+	List<BookEntity> findByBooknameContaining(String bookName);
 }

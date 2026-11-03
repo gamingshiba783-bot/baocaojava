@@ -1,11 +1,8 @@
 package com.javaweb.repository.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name ="Author")
@@ -19,6 +16,17 @@ public class AuthorEntity {
 	private String address;
 	@Column(name ="BirthYear")
 	private Integer birthyear;
+	@ManyToMany(mappedBy = "authors",fetch = FetchType.LAZY)
+	private List<BookEntity> books = new ArrayList<>();
+
+	public List<BookEntity> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<BookEntity> books) {
+		this.books = books;
+	}
+
 	public Long getId() {
 		return id;
 	}

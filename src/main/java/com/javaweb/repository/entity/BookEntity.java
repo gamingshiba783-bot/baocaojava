@@ -37,8 +37,21 @@ public class BookEntity {
 	joinColumns = @JoinColumn(name ="BookID",unique = false),
 	inverseJoinColumns = @JoinColumn(name="CategoryID",unique = false))
 	private List<CategoryEntity> categorys = new ArrayList<>();
-	
-	
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "BookAuthor",
+	joinColumns = @JoinColumn(name="BookID",unique = false),
+	inverseJoinColumns = @JoinColumn(name = "AuthorID",unique = false))
+	private List<AuthorEntity> authors = new ArrayList<>();
+
+	public List<AuthorEntity> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<AuthorEntity> authors) {
+		this.authors = authors;
+	}
+
 	public PublisherEntity getPublisher() {
 		return publisher;
 	}

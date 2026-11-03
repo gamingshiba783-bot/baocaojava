@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="spring-boot-non-jwt">
+    <output-path>$PROJECT_DIR$/out/artifacts/spring_boot_non_jwt</output-path>
+    <root id="archive" name="spring-boot-non-jwt.war" />
+  </artifact>
+</component>

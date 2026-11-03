@@ -1,6 +1,6 @@
 package com.javaweb.model;
 
-import javax.persistence.Column;
+import java.util.List;
 
 public class BookDTO {
 	private Long id;
@@ -9,7 +9,26 @@ public class BookDTO {
 	private Long publisherid;
 	private Integer publishyear;
 	private String information;
-	
+	private String publisher;
+	private String author;
+	private String Category;
+	public String getCategory() {
+		return Category;
+	}
+	public void setCategory(String category) {
+		Category = category;
+	}
+
+	public String getAuthor() { return author; }
+	public void setAuthor(String author) { this.author = author; }
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
 	public String getInformation() {
 		return information;
 	}
@@ -46,5 +65,4 @@ public class BookDTO {
 	public void setPublishyear(Integer publishyear) {
 		this.publishyear = publishyear;
 	}
-	
 }

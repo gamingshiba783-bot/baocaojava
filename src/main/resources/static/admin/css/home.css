@@ -1,0 +1,238 @@
+:root{
+    --nen:rgb(244, 246, 249);
+    --trang:rgb(255, 255, 255);
+    --chu:rgb(33, 37, 41);
+    --chuphu:rgb(108, 117, 125);
+    --vien:rgb(222, 226, 230);
+    --chinh:rgb(37, 99, 235);
+    --xanh:rgb(22, 163, 74);
+    --do:rgb(220, 38, 38);
+    --cam:rgb(217, 119, 6);
+}
+:root{
+    --font-main: "Segoe UI", Arial, sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--nen);
+    color: var(--chu);
+    font-family: var(--font-main);
+    font-size: 14px;
+}
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    background-color: var(--trang);
+    border-right: 1px solid var(--vien);
+}
+.logo{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0px 25px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--chinh);
+    border-bottom: 1px solid var(--vien);
+}
+.menu-box{
+    padding: 15px 10px;
+}
+.menu-box ul{
+    list-style: none;
+}
+.menu-box a{
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    color: var(--chuphu);
+    text-decoration: none;
+    transition: 0.2s;
+}
+.menu-box a:hover{
+    background-color: var(--nen);
+    color: var(--chu);
+}
+.menu-box a.active{
+    background-color: rgb(219, 234, 254);
+    color: var(--chinh);
+    font-weight: 600;
+}
+.user-box{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid var(--vien);
+}
+.user-box p{
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.btn-dangxuat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    background-color: var(--trang);
+    border: 1px solid var(--do);
+    border-radius: 6px;
+    color: var(--do);
+    text-decoration: none;
+    font-size: 14px;
+}
+.btn-dangxuat:hover{
+    background-color: rgb(254, 226, 226);
+}
+.trang{
+    margin-left: 220px;
+    padding: 30px 40px;
+    min-height: 100vh;
+}
+.box-title{
+    margin-bottom: 25px;
+}
+.box-title h1{
+    font-size: 24px;
+    font-weight: 700;
+}
+.box-title span{
+    display: block;
+    margin-top: 6px;
+    color: var(--chuphu);
+}
+.container-number{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.container-number .number{
+    padding: 20px;
+    background-color: var(--trang);
+    border: 1px solid var(--vien);
+    border-radius: 8px;
+}
+.number h1{
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--chinh);
+}
+.number p{
+    margin-top: 4px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.number span{
+    font-size: 12px;
+    color: var(--chuphu);
+}
+.box-bang{
+    margin-bottom: 30px;
+    background-color: var(--trang);
+    border: 1px solid var(--vien);
+    border-radius: 8px;
+}
+.box-tool{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--vien);
+}
+.box-tool h2{
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+}
+.btn-them{
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0px 16px;
+    background-color: var(--chinh);
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border: none;
+}
+.btn-them:hover{
+    background-color: rgb(29, 78, 216);
+}
+.box-table{
+    overflow-x: auto;
+}
+.box-table table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.box-table th{
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--chuphu);
+    background-color: var(--nen);
+    white-space: nowrap;
+}
+.box-table td{
+    padding: 12px 20px;
+    border-top: 1px solid var(--vien);
+}
+.box-table tr:hover td{
+    background-color: rgb(249, 250, 251);
+}
+.box-table td.trong{
+    text-align: center;
+    color: var(--chuphu);
+    padding: 30px 0px;
+}
+.badge{
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: var(--nen);
+    color: var(--chuphu);
+    white-space: nowrap;
+}
+.badge.xanh{
+    background-color: rgb(220, 252, 231);
+    color: var(--xanh);
+}
+.badge.do{
+    background-color: rgb(254, 226, 226);
+    color: var(--do);
+}
+.badge.cam{
+    background-color: rgb(254, 243, 199);
+    color: var(--cam);
+}
+@media (max-width: 900px){
+    .menu{
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+    .user-box{
+        position: static;
+    }
+    .trang{
+        margin-left: 0px;
+        padding: 20px;
+    }
+    .container-number{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
