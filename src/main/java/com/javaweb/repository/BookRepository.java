@@ -10,6 +10,6 @@ import com.javaweb.repository.custom.BookRepositoryCustom;
 import com.javaweb.repository.entity.BookEntity;
 
 public interface BookRepository extends JpaRepository<BookEntity, Long> ,BookRepositoryCustom{
-	void deleteByIdIn(Long[] ids);
 	List<BookEntity> findByBooknameContaining(String bookName);
+	boolean existsByPublisher_Id(Long id);
 }

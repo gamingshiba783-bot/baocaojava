@@ -15,11 +15,11 @@
               <div class="logo">Thư viện</div>
               <div class="menu-box">
                   <ul>
-                      <li><a href="web/home">Tổng quan</a></li>
-                      <li><a class="active" href="sach.html">Sách</a></li>
-                      <li><a href="docgia.html">Độc giả</a></li>
-                      <li><a href="muontra.html">Mượn trả</a></li>
-                      <li><a href="danhmuc.html">Danh mục</a></li>
+                    <li><a href="/admin/book">Tổng quan</a></li>
+                    <li><a href="/admin/book/edit">Sách</a></li>
+                    <li><a href="/admin/book/reader">Độc giả</a></li>
+                    <li><a href="/admin/book/borrow">Mượn trả</a></li>
+                    <li><a href="/admin/list/alllist">Danh mục</a></li>
                   </ul>
               </div>
               <div class="user-box">
@@ -45,13 +45,13 @@
                     type="text"
                     placeholder="Tìm kiếm..."
                     id="searchbook"
-                    path="booktitle"/>
+                    path="bookname"/>
 
         <button class="btn-them" type="submit">
             + Tìm kiếm
         </button>
     </form:form>
-                  <a class="btn-them" href="#form-sach">+ Thêm sách</a>
+                  <a class="btn-them" href="/admin/book/edit#form-sach">+ Thêm sách</a>
 
               </div>
               <div class="box-table" id="listform">
@@ -69,7 +69,6 @@
                       </thead>
                       <tbody>
                         <c:forEach var="item" items="${listmodel}">
-                          <!-- dòng mẫu: thay bằng dữ liệu thật -->
                           <tr>
                               <td>${item.id}</td>
                               <td>${item.bookname}</td>
@@ -79,8 +78,9 @@
                               <td>${item.category}</td>
                               <td>
                                   <div class="hanhdong">
-                                      <a class="sua" href="#form-sach">Sửa</a>
-                                      <button class="xoa" type="button">Xóa</button>
+                                  <input type="hidden" name="id" value="${model.id}">
+                                      <a class="sua" href="/admin/book/edit-${item.id}#form-sach">Sửa</a>
+                                      <button class="xoa" type="button" onclick="deleteBook(${item.id})">Xóa</button>
                                   </div>
                               </td>
                           </tr>
@@ -94,7 +94,7 @@
       <div class="modal-box" id="form-book">
           <h1>Thông tin sách</h1>
           <form:form modelAttribute="model" id="listBook" method="get">
-
+               <form:hidden path="id" id="Bookid"/>
               <div class="form-list">
                   <div class="form-box">
                       <label for="bookname">Tên sách</label>
@@ -148,7 +148,12 @@
 
               <div class="modal-nut">
                   <a class="btn-huy" id="cancel" href="#">Hủy</a>
-                  <button class="btn-luu" type="submit" id="addbook">Lưu</button>
+                  <c:if test="${not empty model.id}">
+                   <button class="btn-luu" type="submit" id="addbook">Sửa</button>
+                    </c:if>
+                  <c:if test="${empty model.id}">
+                  <button class="btn-luu" type="submit" id="addbook">Thêm</button>
+                    </c:if>
               </div>
           </form:form>
       </div>
@@ -166,7 +171,7 @@
           })
           //call api
       $.ajax({
-          type: "POST",
+          type:data.id ? "PUT":"POST",
           url:"/api/book",
           //client
           data:JSON.stringify(data),
@@ -182,31 +187,30 @@
           console.log("Error:", error);
   }
       })
-      $.ajax({
-      type:"GET",
-      url:"http://localhost:8081/api/book",
-      data:JSON.stringify(data),
-      contentType:"application/json",
-      dataType:"JSON",
-      success: function(respond){
-        var row="";
-        $.each(respond,function(i,v){
-            row += "<tr>";
-            row += "<td>"+v.id+"</td>";
-            row += "<td>"+v.bookname+"</td>";
-            row += "<td>"+v.publisherid+"</td>";
-            row += "<td>"+v.publishyear+"</td>";
-            row += "<td>"+v.author+"</td>";
-            row += "<td>"+v.category+"</td>";
-            row += "</tr>";
-        });
-          $('#bookTable tbody').html(row);
-      }})
       });
       $('#cancel').click(function(){
           window.location.href="/admin/book/edit";
       });
-
+        function deleteBook(id){
+            $.ajax({
+            type:"DELETE",
+              url:"/api/book/"+id,
+              //client
+              data:JSON.stringify({id:id}),
+              contentType:"application/json",
+              //sever
+              dataType:"JSON",
+              success: function(respond){
+                  console.log("success")
+                  window.location.reload();
+              },
+              error: function (xhr, status, error) {
+              console.log("Status:", xhr.status);
+              console.log("Response:", xhr.responseText);
+              console.log("Error:", error);
+                }
+                     })
+            }
   </script>
    </body>
 

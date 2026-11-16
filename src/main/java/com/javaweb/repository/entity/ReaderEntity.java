@@ -1,15 +1,11 @@
 package com.javaweb.repository.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "reader")
@@ -41,18 +37,16 @@ public class ReaderEntity {
 	
 	@Column(name = "Status")
 	private Integer status;
-	
-	@ManyToOne
-	@JoinColumn(name ="ReaderID")
-	private LoanEntity loans = new LoanEntity();
-	
-	
-	public LoanEntity getLoans() {
-		return loans;
+
+	@OneToMany(mappedBy = "reader", fetch = FetchType.LAZY)
+	private List<LoanEntity> loan = new ArrayList<>();
+
+	public List<LoanEntity> getLoan() {
+		return loan;
 	}
 
-	public void setLoans(LoanEntity loans) {
-		this.loans = loans;
+	public void setLoan(List<LoanEntity> loan) {
+		this.loan = loan;
 	}
 
 	public Long getId() {
@@ -126,6 +120,5 @@ public class ReaderEntity {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
-	
+
 }

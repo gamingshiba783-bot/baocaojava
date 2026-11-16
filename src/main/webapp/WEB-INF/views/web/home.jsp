@@ -14,11 +14,11 @@
             <div class="logo">Thư viện</div>
             <div class="menu-box">
                 <ul>
-                    <li><a class="active" href="index.html">Tổng quan</a></li>
+                    <li><a href="/admin/book">Tổng quan</a></li>
                     <li><a href="/admin/book/edit">Sách</a></li>
-                    <li><a href="docgia.html">Độc giả</a></li>
-                    <li><a href="muontra.html">Mượn trả</a></li>
-                    <li><a href="danhmuc.html">Danh mục</a></li>
+                    <li><a href="/admin/book/reader">Độc giả</a></li>
+                    <li><a href="/admin/book/borrow">Mượn trả</a></li>
+                    <li><a href="/admin/list/alllist">Danh mục</a></li>
                 </ul>
             </div>
             <div class="user-box">

@@ -29,4 +29,16 @@ public class AuthorDTO {
     public Integer getBirthyear() {
         return birthyear;
     }
+
+    public void setAuthorname(String authorname) {
+        this.authorname = authorname;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setBirthyear(Integer birthyear) {
+        this.birthyear = birthyear;
+    }
 }

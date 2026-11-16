@@ -9,6 +9,7 @@ public class LoanSearchBuilder {
 	private LocalDate borrowdate;
 	private LocalDate duedate;
 	private Integer status;
+	private String readers;
 	
 	private LoanSearchBuilder(Builder builder) {
 		this.id = builder.id;
@@ -16,6 +17,7 @@ public class LoanSearchBuilder {
 		this.borrowdate = builder.borrowdate;
 		this.duedate = builder.duedate;
 		this.status = builder.status;
+		this.readers=builder.readers;
 				
 	}
 	
@@ -39,13 +41,24 @@ public class LoanSearchBuilder {
 		return status;
 	}
 
-	public static class Builder{
+    public String getReaders() {
+		return readers;
+    }
+
+    public static class Builder{
 		private Long id;
 		private Integer readerid;
 		private LocalDate borrowdate;
 		private LocalDate duedate;
 		private Integer status;
-		public Builder setId(Long id) {
+		private String readers;
+
+		public Builder setReaders(String readers) {
+			this.readers = readers;
+			return this;
+		}
+
+	    public Builder setId(Long id) {
 			this.id = id;
 			return this;
 		}

@@ -1,6 +1,6 @@
 package com.javaweb.converter;
 
-import java.nio.file.attribute.AclEntry.Builder;
+
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -16,7 +16,8 @@ public class LoanSearchConverter {
 																			.setReaderid(MapUtil.getObject(params, "readerid", Integer.class))
 																			.setDuedate(MapUtil.getObject(params, "duedate", LocalDate.class))
 																			.setBorrowdate(MapUtil.getObject(params, "borrowdate", LocalDate.class))
-																			.setStatus(MapUtil.getObject(params, "status", Integer.class)).build();
+																			.setStatus(MapUtil.getObject(params, "status", Integer.class))
+				.setReaders(MapUtil.getObject(params,"readers",String.class)).build();
 		return loanSearchBuilder;
 																			
 							

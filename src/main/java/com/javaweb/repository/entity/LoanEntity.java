@@ -4,14 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Entity
 @Table(name ="loan")
 public class LoanEntity {
@@ -24,9 +18,29 @@ public class LoanEntity {
 	private LocalDate duedate;
 	@Column(name ="Status")
 	private Integer status;
-	
-	@OneToMany(mappedBy = "loans",fetch = FetchType.LAZY)
-	List<ReaderEntity> readers = new ArrayList<>();
+
+	@ManyToOne
+	@JoinColumn(name = "Readerid")
+	private ReaderEntity reader;
+
+	@OneToMany(mappedBy = "loan", cascade = CascadeType.REMOVE)
+	private List<LoandetailEntity> loandetailEntities = new ArrayList<>();
+
+	public List<LoandetailEntity> getLoandetailEntities() {
+		return loandetailEntities;
+	}
+
+	public void setLoandetailEntities(List<LoandetailEntity> loandetailEntities) {
+		this.loandetailEntities = loandetailEntities;
+	}
+
+	public ReaderEntity getReader() {
+		return reader;
+	}
+
+	public void setReader(ReaderEntity reader) {
+		this.reader = reader;
+	}
 
 	public Long getId() {
 		return id;
@@ -52,21 +66,12 @@ public class LoanEntity {
 		this.duedate = duedate;
 	}
 
-	public Integer getStatus() {
-		return status;
-	}
 
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
-	public List<ReaderEntity> getReaders() {
-		return readers;
+	public Integer getStatus() {
+		return status;
 	}
-
-	public void setReaders(List<ReaderEntity> readers) {
-		this.readers = readers;
-	}
-	
-	
 }

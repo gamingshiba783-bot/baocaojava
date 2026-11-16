@@ -1,0 +1,356 @@
+:root{
+    --nen:rgb(244, 246, 249);
+    --trang:rgb(255, 255, 255);
+    --chu:rgb(33, 37, 41);
+    --chuphu:rgb(108, 117, 125);
+    --vien:rgb(222, 226, 230);
+    --chinh:rgb(37, 99, 235);
+    --xanh:rgb(22, 163, 74);
+    --do:rgb(220, 38, 38);
+    --cam:rgb(217, 119, 6);
+}
+:root{
+    --font-main: "Segoe UI", Arial, sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--nen);
+    color: var(--chu);
+    font-family: var(--font-main);
+    font-size: 14px;
+}
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    background-color: var(--trang);
+    border-right: 1px solid var(--vien);
+}
+.logo{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0px 25px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--chinh);
+    border-bottom: 1px solid var(--vien);
+}
+.menu-box{
+    padding: 15px 10px;
+}
+.menu-box ul{
+    list-style: none;
+}
+.menu-box a{
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    color: var(--chuphu);
+    text-decoration: none;
+    transition: 0.2s;
+}
+.menu-box a:hover{
+    background-color: var(--nen);
+    color: var(--chu);
+}
+.menu-box a.active{
+    background-color: rgb(219, 234, 254);
+    color: var(--chinh);
+    font-weight: 600;
+}
+.user-box{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid var(--vien);
+}
+.user-box p{
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.btn-dangxuat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    background-color: var(--trang);
+    border: 1px solid var(--do);
+    border-radius: 6px;
+    color: var(--do);
+    text-decoration: none;
+    font-size: 14px;
+}
+.btn-dangxuat:hover{
+    background-color: rgb(254, 226, 226);
+}
+.trang{
+    margin-left: 220px;
+    padding: 30px 40px;
+    min-height: 100vh;
+}
+.box-title{
+    margin-bottom: 25px;
+}
+.box-title h1{
+    font-size: 24px;
+    font-weight: 700;
+}
+.box-title span{
+    display: block;
+    margin-top: 6px;
+    color: var(--chuphu);
+}
+.box-bang{
+    margin-bottom: 30px;
+    background-color: var(--trang);
+    border: 1px solid var(--vien);
+    border-radius: 8px;
+}
+.box-tool{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--vien);
+}
+.box-tool h2{
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+}
+.timkiem{
+    width: 240px;
+    height: 36px;
+    padding: 0px 12px;
+    border: 1px solid var(--vien);
+    border-radius: 6px;
+    outline: none;
+    font-family: var(--font-main);
+    font-size: 14px;
+}
+.timkiem:focus{
+    border: 1px solid var(--chinh);
+}
+.btn-them{
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0px 16px;
+    background-color: var(--chinh);
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+.btn-them:hover{
+    background-color: rgb(29, 78, 216);
+}
+.box-table{
+    overflow-x: auto;
+}
+.box-table table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.box-table th{
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--chuphu);
+    background-color: var(--nen);
+    white-space: nowrap;
+}
+.box-table td{
+    padding: 12px 20px;
+    border-top: 1px solid var(--vien);
+}
+.box-table tr:hover td{
+    background-color: rgb(249, 250, 251);
+}
+.badge{
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: var(--nen);
+    color: var(--chuphu);
+    white-space: nowrap;
+}
+.badge.xanh{
+    background-color: rgb(220, 252, 231);
+    color: var(--xanh);
+}
+.badge.do{
+    background-color: rgb(254, 226, 226);
+    color: var(--do);
+}
+.badge.cam{
+    background-color: rgb(254, 243, 199);
+    color: var(--cam);
+}
+.hanhdong{
+    display: flex;
+    gap: 8px;
+}
+.sua, .xoa{
+    display: flex;
+    align-items: center;
+    height: 28px;
+    padding: 0px 12px;
+    background-color: var(--trang);
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.sua{
+    color: var(--chinh);
+    border: 1px solid var(--chinh);
+}
+.sua:hover{
+    background-color: rgb(219, 234, 254);
+}
+.xoa{
+    color: var(--do);
+    border: 1px solid var(--do);
+}
+.xoa:hover{
+    background-color: rgb(254, 226, 226);
+}
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 200;
+}
+.modal:target{
+    display: flex;
+}
+.modal-box{
+    width: 620px;
+    max-width: 94%;
+    max-height: 90%;
+    overflow-y: auto;
+    padding: 25px 30px;
+    background-color: var(--trang);
+    border-radius: 10px;
+}
+.modal-box h1{
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.form-list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+.form-box{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.form-box label{
+    font-size: 13px;
+    color: var(--chuphu);
+}
+.form-box input, .form-box select{
+    height: 36px;
+    padding: 0px 10px;
+    border: 1px solid var(--vien);
+    border-radius: 6px;
+    outline: none;
+    font-family: var(--font-main);
+    font-size: 14px;
+}
+.form-box input:focus, .form-box select:focus{
+    border: 1px solid var(--chinh);
+}
+.modal-nut{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+.btn-huy, .btn-luu{
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0px 22px;
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-huy{
+    background-color: var(--trang);
+    border: 1px solid var(--vien);
+    color: var(--chu);
+}
+.btn-huy:hover{
+    background-color: var(--nen);
+}
+.btn-luu{
+    background-color: var(--chinh);
+    border: 0;
+    color: white;
+}
+.btn-luu:hover{
+    background-color: rgb(29, 78, 216);
+}
+@media (max-width: 900px){
+    .menu{
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+    .user-box{
+        position: static;
+    }
+    .trang{
+        margin-left: 0px;
+        padding: 20px;
+    }
+    .box-tool{
+        flex-wrap: wrap;
+    }
+    .timkiem{
+        width: 100%;
+        order: 3;
+    }
+    .form-list{
+        grid-template-columns: 1fr;
+    }
+}
+.badge.dangmuon {
+    background-color: rgb(220, 252, 231);
+    color: rgb(22, 163, 74);
+}
+.badge.hethan {
+    background-color: rgb(254, 226, 226);
+    color: rgb(220, 38, 38);
+}
+.badge.datra {
+    background-color: rgb(219, 234, 254);
+    color: rgb(37, 99, 235);
+}
