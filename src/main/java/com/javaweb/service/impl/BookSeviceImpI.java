@@ -102,4 +102,9 @@ public class BookSeviceImpI implements Booksevice{
 	public BookDTO findByid(Long id) {
 		return bookConverter.tobook(bookRepository.findById(id).get());
 	}
+
+	@Override
+	public Long countBooks() {
+		return bookRepository.count();
+	}
 }

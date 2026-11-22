@@ -47,6 +47,8 @@ public class libraryapi {
 	private LoanSevice loanSevice;
 	@Autowired
 	private LoanDetailSevice loanDetailSevice;
+	@Autowired
+	private ReaderSevice readerSevice;
 	@DeleteMapping(value = "/api/book/{id}")
 	public void deletebookbean(@PathVariable Long id){
 		booksevice.deleteBook(id);
@@ -147,5 +149,20 @@ public class libraryapi {
 	@DeleteMapping(value = "/api/loandetail/{id}")
 	public void deleteloandetail(@PathVariable Long id) {
 		loanDetailSevice.deleteLoanDetail(id);
+	}
+
+	@PostMapping(value = "/api/reader")
+	public ReaderDTO insertreader(@RequestBody ReaderDTO readerDTO) {
+		readerSevice.isnsertReader(readerDTO);
+		return readerDTO;
+	}
+	@PutMapping(value = "/api/reader")
+	public ReaderDTO updatereader(@RequestBody ReaderDTO readerDTO) {
+		readerSevice.updateReader(readerDTO);
+		return readerDTO;
+	}
+	@DeleteMapping(value = "/api/reader/{id}")
+	public void deletereader(@PathVariable Long id) {
+		readerSevice.deleteReader(id);
 	}
 }

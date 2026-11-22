@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="List" value="/admin/book/reader"/>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -35,8 +36,12 @@
     <div class="box-bang">
         <div class="box-tool">
             <h2>Danh sách độc giả</h2>
-            <input class="timkiem" type="text" placeholder="Tìm kiếm...">
+            <form:form modelAttribute="modelreader" action="${List}" method="get">
+                <form:input class="timkiem" type="text" placeholder="Tìm kiếm..." path="fullname"/>
+
+            </form:form>
             <a class="btn-them" href="#form-docgia">+ Thêm độc giả</a>
+
         </div>
         <div class="box-table">
             <table>
@@ -56,23 +61,36 @@
                 </thead>
                 <tbody>
                 <!-- dòng mẫu: thay bằng dữ liệu thật -->
+                <c:forEach var="item" items="${readersevice}">
                 <tr>
-                    <td>1</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>2004-05-12</td>
-                    <td>Nam</td>
-                    <td>Hà Nội</td>
-                    <td>0901234567</td>
-                    <td>2026-01-10</td>
-                    <td>2027-01-10</td>
-                    <td><span class="badge xanh">Hoạt động</span></td>
+                    <td>${item.id}</td>
+                    <td>${item.fullname}</td>
+                    <td>${item.dataofbirth}</td>
+                    <td>${item.gendername}</td>
+                    <td>${item.address}</td>
+                    <td>${item.phone}</td>
+                    <td>${item.registrationdate}</td>
+                    <td>${item.expirydate}</td>
+                    <c:choose>
+                        <c:when test="${item.statusCode==0}">
+                        <td><span class="badge offline">${item.statusName}</span></td>
+                        </c:when>
+                        <c:when test="${item.statusCode==1}">
+                        <td><span class="badge xanh">${item.statusName}</span></td>
+                        </c:when>
+                         <c:when test="${item.statusCode==2}">
+                        <td><span class="badge ban">${item.statusName}</span></td>
+                        </c:when>
+                    </c:choose>
                     <td>
                         <div class="hanhdong">
-                            <a class="sua" href="#form-docgia">Sửa</a>
-                            <button class="xoa" type="button">Xóa</button>
+                         <input type="hidden" name="id" value="${modelreader.id}">
+                            <a class="sua" href="/admin/book/reader-${item.id}#form-docgia">Sửa</a>
+                            <button class="xoa" type="button" id="delete" onclick="deletereader(${item.id}) " >Xóa</button>
                         </div>
                     </td>
                 </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -81,55 +99,107 @@
 <div class="modal" id="form-docgia">
     <div class="modal-box">
         <h1>Thông tin độc giả</h1>
-        <form action="#">
+        <form:form modelAttribute="modelreader" id="reader" method="get">
+        <form:hidden path="id"/>
             <div class="form-list">
                 <div class="form-box">
                     <label>Họ tên</label>
-                    <input type="text" required>
+                    <form:input type="text" path="fullname" />
                 </div>
                 <div class="form-box">
                     <label>Ngày sinh</label>
-                    <input type="date">
+                    <input type="date" name="dataofbirth" value="${modelreader.dataofbirth}" required/>
                 </div>
                 <div class="form-box">
                     <label>Giới tính</label>
-                    <select>
-                        <option>Nam</option>
-                        <option>Nữ</option>
-                        <option>Khác</option>
-                    </select>
+                    <form:select path="gender">
+                        <form:options items="${readergender}"/>
+                    </form:select>
                 </div>
                 <div class="form-box">
                     <label>Địa chỉ</label>
-                    <input type="text">
+                    <form:input type="text" path="address"/>
                 </div>
                 <div class="form-box">
                     <label>SĐT</label>
-                    <input type="text" pattern="[0-9]{9,11}" title="Số điện thoại gồm 9 đến 11 chữ số">
+                    <form:input type="text" path="phone"/>
                 </div>
                 <div class="form-box">
                     <label>Ngày đăng ký</label>
-                    <input type="date">
+                    <input type="date" name="registrationdate" value="${modelreader.registrationdate}" required/>
                 </div>
                 <div class="form-box">
                     <label>Ngày hết hạn</label>
-                    <input type="date">
+                    <input type="date" name="expirydate" value="${modelreader.expirydate}" required/>
                 </div>
                 <div class="form-box">
                     <label>Trạng thái</label>
-                    <select>
-                        <option>Hoạt động</option>
-                        <option>Hết hạn</option>
-                        <option>Khóa</option>
-                    </select>
+                    <form:select path="status">
+                        <form:options items="${readerstatus}"/>
+                    </form:select>
                 </div>
             </div>
             <div class="modal-nut">
-                <a class="btn-huy" href="#">Hủy</a>
-                <button class="btn-luu" type="submit">Lưu</button>
+                <a type="button" class="btn-huy" id="cancel">Hủy</a>
+                <c:if test="${not empty modelreader.id}">
+                    <button class="btn-luu" type="submit">Sửa</button>
+                </c:if>
+                <c:if test="${empty modelreader.id}">
+                    <button class="btn-luu" type="submit">Thêm</button>
+                </c:if>
             </div>
-        </form>
+        </form:form>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $('#reader').submit(function (event) {
+        event.preventDefault();
+        var data={};
+        var formdata = $('#reader').serializeArray();
+        $.each(formdata, function (i, v) {
+            if(v.name){
+                data["" + v.name + ""] = v.value;
+            }
+        })
+        if (!data.id) delete data.id;
+        $.ajax({
+            type:data.id ?"PUT" : "POST",
+            url:"/api/reader",
+            dataType:"json",
+            contentType:"application/json",
+            data:JSON.stringify(data),
+            success: function(respond){
+            console.log("cập nhật");
+          },
+          error: function (xhr, status, error) {
+          console.log("Status:", xhr.status);
+          console.log("Response:", xhr.responseText);
+          console.log("Error:", error);
+          }
+        })
+    })
+    function deletereader(id){
+             $.ajax({
+            type:"DELETE",
+            dataType:"json",
+            contentType:"application/json",
+            data:{id:id},
+            url:"/api/reader/"+id,
+            ssuccess: function () {
+            alert("Xóa thành công!");
+            window.location.href = "/admin/book/reader";
+            },
+        error: function (xhr, status, error) {
+              console.log("Status:", xhr.status);
+              console.log("Response:", xhr.responseText);
+              console.log("Error:", error);
+                }
+        })
+        }
+    $("#cancel").click(function () {
+        window.location.href="/admin/book/reader";
+    })
+</script>
 </body>
 </html>

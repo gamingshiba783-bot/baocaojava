@@ -14,4 +14,7 @@ public interface LoanSevice {
     void updateLoan(Long id,LoanDTO loanDTO);
     void deleteLoan(Long id);
     LoanDTO findbyid(Long id);
+    List<LoanDTO> findbyids();
+    Long coutloan();
+    Long coutstatusloan(int status);
 }

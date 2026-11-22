@@ -70,4 +70,23 @@ public class LoanSeviceImpl implements LoanSevice {
     public LoanDTO findbyid(Long id) {
         return loanConverter.toloan(loanRepository.findById(id).get());
     }
+
+    @Override
+    public List<LoanDTO> findbyids() {
+        List<LoanDTO> result = new ArrayList<>();
+        for(LoanEntity loanEntity : loanRepository.findTop5ByOrderByBorrowdateDescIdDesc()){
+            result.add(loanConverter.toloan(loanEntity));
+        }
+        return result;
+    }
+    @Override
+    public Long coutloan() {
+        return loanRepository.count();
+    }
+
+    @Override
+    public Long statusloan() {
+        if()
+        return 0L;
+    }
 }

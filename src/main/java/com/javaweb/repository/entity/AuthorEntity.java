@@ -51,8 +51,4 @@ public class AuthorEntity {
 	public void setBirthyear(Integer birthyear) {
 		this.birthyear = birthyear;
 	}
-	
-	
-	
-	
 }

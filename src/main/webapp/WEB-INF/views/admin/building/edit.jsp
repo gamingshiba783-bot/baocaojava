@@ -98,28 +98,28 @@
               <div class="form-list">
                   <div class="form-box">
                       <label for="bookname">Tên sách</label>
-                      <input type="text" id="bookname"
+                      <input type="text" value="${model.bookname}"
                              name="bookname" required>
                   </div>
 
                   <div class="form-box">
                       <label for="publisherid">Nhà xuất bản</label>
                       <form:select path="publisherid">
-                          <form:option value="">-- Chọn --</form:option>
+                          <form:option value="${model.publisherid}">-- Chọn --</form:option>
                           <form:options items="${Listpublishers}"/>
                       </form:select>
                   </div>
 
                   <div class="form-box">
                       <label for="publishyear">Năm xuất bản</label>
-                      <input type="number" id="publishyear"
+                      <input type="number" value="${model.publishyear}"
                              name="publishyear" required>
                   </div>
 
                   <div class="form-box">
                       <label for="authorid">Tác giả</label>
                       <form:select path="author">
-                          <form:option value="">-- Chọn --</form:option>
+                          <form:option value="${model.author}">-- Chọn --</form:option>
                            <form:options items="${listauthor}"/>
                       </form:select>
                   </div>
@@ -135,7 +135,7 @@
                   <div class="form-box">
                       <label for="categoryid">Thể loại</label>
                       <form:select path="category">
-                          <form:option value="">-- Chọn --</form:option>
+                          <form:option value="${model.category}">-- Chọn --</form:option>
                            <form:options items="${listcategory}"/>
                       </form:select>
                   </div>

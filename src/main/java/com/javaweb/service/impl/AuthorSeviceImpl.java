@@ -71,4 +71,9 @@ public class AuthorSeviceImpl implements AuthorSevice {
     public AuthorDTO findById(Long id) {
         return authorConverter.toAuthor(authorRepository.findById(id).get());
     }
+
+    @Override
+    public Long countAuthors() {
+        return authorRepository.count();
+    }
 }

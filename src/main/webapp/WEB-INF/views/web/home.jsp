@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
@@ -62,7 +63,7 @@
         <div class="box-bang">
             <div class="box-tool">
                 <h2>Phiếu mượn gần đây</h2>
-                <a class="btn-them" href="muontra.html">Xem tất cả</a>
+                <a class="btn-them" href="/admin/book/borrow">Xem tất cả</a>
             </div>
             <div class="box-table">
                 <table>
@@ -76,16 +77,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="item" items="${toploan}">
                         <tr>
-                            <td>1</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>2026-10-01</td>
-                            <td>2026-10-15</td>
-                            <td><span class="badge cam">Đang mượn</span></td>
+                            <td>${item.id}</td>
+                            <td>${item.readers}</td>
+                            <td>${item.borrowdate}</td>
+                            <td>${item.duedate}
+                                <c:choose>
+                                <c:when test="${item.statuscode==0}">
+                            <td><span class="badge quahan">${item.statusname}</span></td>
+                            </c:when>
+                            <c:when test="${item.statuscode==1}">
+                                <td><span class="badge dangmuon">${item.statusname}</span></td>
+                            </c:when>
+                            </c:choose>
                         </tr>
+                    </c:forEach>
+                    <c:if test="${empty toploan}">
                         <tr>
                             <td class="trong" colspan="5">Không có dữ liệu</td>
                         </tr>
+                    </c:if>
                     </tbody>
                 </table>
             </div>

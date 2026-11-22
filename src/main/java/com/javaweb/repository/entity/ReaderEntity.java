@@ -38,7 +38,7 @@ public class ReaderEntity {
 	@Column(name = "Status")
 	private Integer status;
 
-	@OneToMany(mappedBy = "reader", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "reader", cascade = CascadeType.REMOVE)
 	private List<LoanEntity> loan = new ArrayList<>();
 
 	public List<LoanEntity> getLoan() {

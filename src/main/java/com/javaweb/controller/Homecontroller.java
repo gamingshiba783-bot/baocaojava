@@ -5,6 +5,7 @@ import com.javaweb.model.CategoryDTO;
 import com.javaweb.repository.BookRepository;
 import com.javaweb.service.Booksevice;
 import com.javaweb.service.CategorySevice;
+import com.javaweb.service.LoanSevice;
 import com.javaweb.service.impl.AuthorSeviceImpl;
 import com.javaweb.service.impl.PublisherSeviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,13 @@ import java.util.Map;
 
 @Controller
 public class Homecontroller {
+    @Autowired
+    private LoanSevice loanSevice;
     @GetMapping(value = "/admin/book")
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("web/home");
+        mav.addObject("toploan",loanSevice.findbyids());
+        mav.addObject("books",loanSevice.c);
         return mav;
     }
 }

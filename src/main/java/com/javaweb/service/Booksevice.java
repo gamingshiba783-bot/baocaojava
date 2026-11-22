@@ -14,4 +14,5 @@ public interface Booksevice {
 
 	void deleteBook(Long id);
 	BookDTO findByid(Long id);
+	Long countBooks();
 }

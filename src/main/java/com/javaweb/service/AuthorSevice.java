@@ -14,4 +14,5 @@ public interface AuthorSevice {
     void updateAuthor(Long id,AuthorDTO authorDTO);
     void deleteAuthor(Long id);
     AuthorDTO findById(Long id);
+    Long countAuthors();
 }

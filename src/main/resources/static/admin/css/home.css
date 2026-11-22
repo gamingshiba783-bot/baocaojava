@@ -236,3 +236,7 @@ body{
         grid-template-columns: repeat(2,1fr);
     }
 }
+.badge.dangmuon {
+    background-color: rgb(220, 252, 231);
+    color: rgb(22, 163, 74);
+}

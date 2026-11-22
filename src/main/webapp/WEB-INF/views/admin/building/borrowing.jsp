@@ -38,8 +38,8 @@
             <h2>Phiếu mượn</h2>
             <form:form modelAttribute="modelloan" action="${list}" method="GET">
             <form:input class="timkiem" type="text" placeholder="Tìm kiếm..." path="readers"/>
-            <a class="btn-them" href="#form-phieumuon">+ Lập phiếu mượn</a>
             </form:form>
+            <a class="btn-them" href="#form-phieumuon">+ Lập phiếu mượn</a>
         </div>
         <div class="box-table">
             <table>
@@ -87,8 +87,8 @@
             <h2>Chi tiết mượn</h2>
             <form:form modelAttribute="modelloandetail" action="${list}" method="get">
             <form:input class="timkiem" type="text" placeholder="Tìm kiếm..." path="loanid"/>
-            <a class="btn-them" href="#form-ctmuon">+ Thêm chi tiết</a>
             </form:form>
+            <a class="btn-them" href="#form-ctmuon">+ Thêm chi tiết</a>
         </div>
         <div class="box-table">
             <table>

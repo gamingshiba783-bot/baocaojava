@@ -16,6 +16,33 @@ public class ReaderDTO {
     private LocalDate registrationdate;
     private LocalDate expirydate;
     private Integer status;
+    private String gendername;
+    private String StatusName;
+    private Integer StatusCode;
+
+    public Integer getStatusCode() {
+        return StatusCode;
+    }
+
+    public void setStatusCode(Integer statusCode) {
+        StatusCode = statusCode;
+    }
+
+    public String getStatusName() {
+        return StatusName;
+    }
+
+    public void setStatusName(String statusName) {
+        StatusName = statusName;
+    }
+
+    public String getGendername() {
+        return gendername;
+    }
+
+    public void setGendername(String gendername) {
+        this.gendername = gendername;
+    }
 
     public Long getId() {
         return id;
