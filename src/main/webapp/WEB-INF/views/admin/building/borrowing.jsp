@@ -71,7 +71,7 @@
                     </c:choose>
                     <td>
                         <div class="hanhdong">
-                        <input type="hidden" name="id" value="${modelloan.id}">
+                            <input type="hidden" name="id" value="${item.id}">
                             <a class="sua" href="/admin/book/borrow-${item.id}#form-phieumuon">Sửa</a>
                             <button class="xoa" type="button" onclick="deleteloan(${item.id})">Xóa</button>
                         </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="form-box">
                     <label>Trạng thái</label>
-                    <form:select path="statusname">
+                    <form:select path="status">
                         <form:options items="${liststatus}"/>
                     </form:select>
                 </div>

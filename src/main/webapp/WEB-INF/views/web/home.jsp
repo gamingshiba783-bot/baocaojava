@@ -35,22 +35,22 @@
         </div>
         <div class="container-number">
             <div class="number">
-                <h1>0</h1>
+                <h1>${coutbooks}</h1>
                 <p>đầu sách</p>
                 <span>Trong kho</span>
             </div>
             <div class="number">
-                <h1>0</h1>
+                <h1>${coutreader}</h1>
                 <p>độc giả</p>
                 <span>Đã đăng ký</span>
             </div>
             <div class="number">
-                <h1>0</h1>
+                <h1>${coutstatusbrow}</h1>
                 <p>đang mượn</p>
                 <span>Phiếu chưa trả</span>
             </div>
             <div class="number">
-                <h1>0</h1>
+                <h1>${coutstatus}</h1>
                 <p>quá hạn</p>
                 <span>Cần nhắc trả</span>
             </div>

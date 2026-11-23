@@ -13,5 +13,6 @@ public interface ReaderSevice {
     void updateReader(ReaderDTO readerDTO);
     void deleteReader(Long id);
     ReaderDTO findReaderById(Long id);
+    Long coutreader();
 
 }

@@ -4,9 +4,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public enum LoanDetail {
-    GOOD("Tốt"),
-    TORN("Rách"),
-    LOST("Mất");
+    Tot("Tốt"),
+    Rach("Rách"),
+    Mat("Mất");
     private final String NameReturnCondition;
     LoanDetail(String NameReturnCondition) {
         this.NameReturnCondition = NameReturnCondition;

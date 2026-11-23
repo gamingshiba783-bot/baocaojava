@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public enum GenderReader {
-    MALE("Nam"),
-    FEMALE("Nữ");
+    Nam("Nam"),
+    Nu("Nữ");
     private final String value;
     GenderReader(String value) {
         this.value = value;

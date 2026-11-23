@@ -16,5 +16,6 @@ public interface LoanSevice {
     LoanDTO findbyid(Long id);
     List<LoanDTO> findbyids();
     Long coutloan();
-    Long coutstatusloan(int status);
+    Long coutstatusloan();
+    Long coutstatusbrow();
 }

@@ -16,17 +16,15 @@ public class AuthorEntity {
 	private String address;
 	@Column(name ="BirthYear")
 	private Integer birthyear;
-	@ManyToMany(mappedBy = "authors",fetch = FetchType.LAZY)
-	private List<BookEntity> books = new ArrayList<>();
+	@OneToMany(mappedBy = "author",cascade = CascadeType.REMOVE)
+	private List<BookAuthorEntity> books = new ArrayList<>();
 
-	public List<BookEntity> getBooks() {
+	public List<BookAuthorEntity> getBooks() {
 		return books;
 	}
-
-	public void setBooks(List<BookEntity> books) {
+	public void setBooks(List<BookAuthorEntity> books) {
 		this.books = books;
 	}
-
 	public Long getId() {
 		return id;
 	}

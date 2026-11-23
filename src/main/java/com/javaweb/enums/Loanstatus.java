@@ -22,10 +22,10 @@ public enum Loanstatus {
         return code;
     }
 
-    public static Map<String,String> type(){
-        Map<String,String> loanstatus = new TreeMap<>();
-        for(Loanstatus ls : Loanstatus.values()){
-            loanstatus.put(ls.toString(), ls.statusname);
+    public static Map<Integer, String> type() {
+        Map<Integer, String> loanstatus = new TreeMap<>();
+        for (Loanstatus ls : Loanstatus.values()) {
+            loanstatus.put(ls.getCode(), ls.getStatusname());
         }
         return loanstatus;
     }

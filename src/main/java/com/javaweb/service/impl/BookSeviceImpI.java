@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.javaweb.repository.AuthorRepository;
+import com.javaweb.repository.BookAuthorRepository;
 import com.javaweb.repository.CategoryRepository;
+import com.javaweb.repository.entity.AuthorEntity;
+import com.javaweb.repository.entity.BookAuthorEntity;
 import com.javaweb.repository.entity.PublisherEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +33,8 @@ public class BookSeviceImpI implements Booksevice{
 	private CategoryRepository categoryRepository;
 	@Autowired
 	private BookConverter bookConverter;
+	@Autowired
+	private BookAuthorRepository bookAuthorRepository;
 
 	@Override
 	public Map<Long, String> getbook() {
@@ -61,10 +67,16 @@ public class BookSeviceImpI implements Booksevice{
 		PublisherEntity publisherEntity = new PublisherEntity();
 		publisherEntity.setId(bookDTO.getPublisherid());
 		bookEntity.setPublisher(publisherEntity);
+		bookRepository.save(bookEntity);
 		if (bookDTO.getAuthor() != null && !bookDTO.getAuthor().isEmpty()) {
-			Long authorId = Long.valueOf(bookDTO.getAuthor());
-			authorRepository.findById(authorId)
-					.ifPresent(a -> bookEntity.getAuthors().add(a));
+			authorRepository.findById(Long.valueOf(bookDTO.getAuthor()))
+					.ifPresent(author -> {
+						BookAuthorEntity ba = new BookAuthorEntity();
+						ba.setBook(bookEntity);
+						ba.setAuthor(author);
+						ba.setRole(bookDTO.getRole());
+						bookAuthorRepository.save(ba);
+					});
 		}
 		Long categoryId = Long.valueOf(bookDTO.getCategory());
 		categoryRepository.findById(categoryId).ifPresent(e -> bookEntity.getCategorys().add(e));
@@ -80,17 +92,21 @@ public class BookSeviceImpI implements Booksevice{
 		PublisherEntity publisherEntity = new PublisherEntity();
 		publisherEntity.setId(bookDTO.getPublisherid());
 		bookEntity.setPublisher(publisherEntity);
+		bookEntity.getAuthors().clear();
 		if (bookDTO.getAuthor() != null && !bookDTO.getAuthor().isEmpty()) {
-			bookEntity.getAuthors().clear();
-			Long authorId = Long.valueOf(bookDTO.getAuthor());
-			authorRepository.findById(authorId)
-					.ifPresent(a -> bookEntity.getAuthors().add(a));
+			authorRepository.findById(Long.valueOf(bookDTO.getAuthor()))
+					.ifPresent(author -> {
+						BookAuthorEntity ba = new BookAuthorEntity();
+						ba.setBook(bookEntity);
+						ba.setAuthor(author);
+						ba.setRole(bookDTO.getRole());
+						bookAuthorRepository.save(ba);
+					});
 		}
 		bookEntity.getCategorys().clear();
 		Long categoryId = Long.valueOf(bookDTO.getCategory());
 		categoryRepository.findById(categoryId).ifPresent(e -> bookEntity.getCategorys().add(e));
 		bookRepository.save(bookEntity);
-		System.out.print("đã cập nhật");
 	}
 
 	@Override

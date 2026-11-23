@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/taglib.jsp" %>
+<%@ include file="/common/taglib.jsp" %>
 <c:url var="bookList" value="/admin/book/edit"/>
   <!DOCTYPE html>
   <html lang="vi">
@@ -105,7 +105,7 @@
                   <div class="form-box">
                       <label for="publisherid">Nhà xuất bản</label>
                       <form:select path="publisherid">
-                          <form:option value="${model.publisherid}">-- Chọn --</form:option>
+                          <form:option value="">-- Chọn --</form:option>
                           <form:options items="${Listpublishers}"/>
                       </form:select>
                   </div>
@@ -119,23 +119,21 @@
                   <div class="form-box">
                       <label for="authorid">Tác giả</label>
                       <form:select path="author">
-                          <form:option value="${model.author}">-- Chọn --</form:option>
+                          <form:option value="">-- Chọn --</form:option>
                            <form:options items="${listauthor}"/>
                       </form:select>
                   </div>
 
                   <div class="form-box">
                       <label for="role">Vai trò tác giả</label>
-                      <select id="role" name="role">
-                          <option value="Tác giả chính">Tác giả chính</option>
-                          <option value="Đồng tác giả">Đồng tác giả</option>
-                          <option value="Dịch giả">Dịch giả</option>
-                      </select>
+                      <form:select path="role">
+                          <form:options items="${rolecode}"/>
+                      </form:select>
                   </div>
                   <div class="form-box">
                       <label for="categoryid">Thể loại</label>
                       <form:select path="category">
-                          <form:option value="${model.category}">-- Chọn --</form:option>
+                          <form:option value="">-- Chọn --</form:option>
                            <form:options items="${listcategory}"/>
                       </form:select>
                   </div>

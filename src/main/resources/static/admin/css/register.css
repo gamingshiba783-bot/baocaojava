@@ -1,0 +1,122 @@
+:root {
+    --nen: rgb(244, 246, 249);
+    --trang: rgb(255, 255, 255);
+    --chu: rgb(33, 37, 41);
+    --chuphu: rgb(108, 117, 125);
+    --vien: rgb(222, 226, 230);
+    --chinh: rgb(37, 99, 235);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--nen);
+    color: var(--chu);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.box {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+}
+
+.box-form {
+    width: 420px;
+    max-width: 100%;
+    padding: 35px;
+    background-color: var(--trang);
+    border: 1px solid var(--vien);
+    border-radius: 10px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--chinh);
+}
+
+.tieude {
+    margin-top: 6px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--chuphu);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-box label {
+    font-size: 13px;
+    color: var(--chuphu);
+}
+
+.form-box input {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--vien);
+    border-radius: 6px;
+    outline: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.form-box input:focus {
+    border: 1px solid var(--chinh);
+}
+
+.btn-gui {
+    height: 42px;
+    margin-top: 5px;
+    background-color: var(--chinh);
+    border: 0;
+    border-radius: 6px;
+    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-gui:hover {
+    background-color: rgb(29, 78, 216);
+}
+
+.chuyen {
+    text-align: center;
+    color: var(--chuphu);
+}
+
+.chuyen a {
+    color: var(--chinh);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chuyen a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .box-form {
+        padding: 25px 20px;
+    }
+}

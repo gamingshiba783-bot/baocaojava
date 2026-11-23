@@ -1,5 +1,6 @@
 package com.javaweb.controller;
 
+import com.javaweb.enums.BookAuthorRole;
 import com.javaweb.model.BookDTO;
 import com.javaweb.service.Booksevice;
 import com.javaweb.service.CategorySevice;
@@ -37,6 +38,7 @@ public class Bookcontroller {
         mav.addObject("Listpublishers",publisherSevice.getpublishers());
         mav.addObject("listauthor",authorSevice.getauthors());
         mav.addObject("listcategory",categorySevice.getCategory());
+        mav.addObject("rolecode", BookAuthorRole.getRoleMap());
         return  mav;
     }
     @GetMapping(value = "/admin/book/edit-{id}")
@@ -47,6 +49,7 @@ public class Bookcontroller {
         mav.addObject("listauthor", authorSevice.getauthors());
         mav.addObject("listcategory", categorySevice.getCategory());
         mav.addObject("listmodel", booksevice.findAll(new HashMap<>()));
+        mav.addObject("rolecode", BookAuthorRole.getRoleMap());
         return mav;
     }
 }

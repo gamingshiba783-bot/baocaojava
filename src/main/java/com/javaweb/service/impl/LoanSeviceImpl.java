@@ -85,8 +85,12 @@ public class LoanSeviceImpl implements LoanSevice {
     }
 
     @Override
-    public Long statusloan() {
-        if()
-        return 0L;
+    public Long coutstatusloan() {
+        return loanRepository.countByStatus(0);
+    }
+
+    @Override
+    public Long coutstatusbrow() {
+        return loanRepository.countByStatus(1);
     }
 }

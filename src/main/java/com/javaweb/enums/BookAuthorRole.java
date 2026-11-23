@@ -15,10 +15,10 @@ public enum BookAuthorRole {
         return rolestring;
     }
     public static Map<String, String> getRoleMap() {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> roleauthor = new HashMap<>();
         for (BookAuthorRole role : BookAuthorRole.values()) {
-            map.put(role.getRolestring(), role.getRolestring());
+            roleauthor.put(role.name(), role.rolestring);
         }
-        return map;
+        return roleauthor;
     }
 }

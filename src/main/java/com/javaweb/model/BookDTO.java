@@ -12,6 +12,16 @@ public class BookDTO {
 	private String publisher;
 	private String author;
 	private String Category;
+	private Long authorid;
+	private String role;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getCategory() {
 		return Category;
 	}
@@ -64,5 +74,13 @@ public class BookDTO {
 	}
 	public void setPublishyear(Integer publishyear) {
 		this.publishyear = publishyear;
+	}
+
+	public Long getAuthorid() {
+		return authorid;
+	}
+
+	public void setAuthorid(Long authorid) {
+		this.authorid = authorid;
 	}
 }

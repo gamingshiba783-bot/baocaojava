@@ -12,4 +12,5 @@ import com.javaweb.repository.entity.BookEntity;
 public interface BookRepository extends JpaRepository<BookEntity, Long> ,BookRepositoryCustom{
 	List<BookEntity> findByBooknameContaining(String bookName);
 	boolean existsByPublisher_Id(Long id);
+	long count();
 }

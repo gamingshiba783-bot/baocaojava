@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface LoanRepository extends JpaRepository<LoanEntity, Long>, LoanRepositoryCustom {
     List<LoanEntity> findTop5ByOrderByBorrowdateDescIdDesc();
+    Long countByStatus(int status);
 }

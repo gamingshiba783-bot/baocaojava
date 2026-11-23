@@ -61,9 +61,6 @@ public class AuthorSeviceImpl implements AuthorSevice {
     @Transactional
     public void deleteAuthor(Long id) {
         AuthorEntity author = authorRepository.findById(id).get();
-        for (BookEntity b : new ArrayList<>(author.getBooks())) {
-            b.getAuthors().remove(author);
-        }
         authorRepository.delete(author);
     }
 

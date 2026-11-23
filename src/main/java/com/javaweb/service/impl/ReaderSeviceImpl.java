@@ -63,4 +63,9 @@ public class ReaderSeviceImpl implements ReaderSevice {
     public ReaderDTO findReaderById(Long id) {
         return readerCoverter.toReaderDTO(readerRepository.findById(id).get());
     }
+
+    @Override
+    public Long coutreader() {
+        return readerRepository.count();
+    }
 }

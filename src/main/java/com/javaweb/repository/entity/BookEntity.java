@@ -28,11 +28,8 @@ public class BookEntity {
 	inverseJoinColumns = @JoinColumn(name="CategoryID",unique = false))
 	private List<CategoryEntity> categorys = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "BookAuthor",
-	joinColumns = @JoinColumn(name="BookID",unique = false),
-	inverseJoinColumns = @JoinColumn(name = "AuthorID",unique = false))
-	private List<AuthorEntity> authors = new ArrayList<>();
+	@OneToMany(mappedBy = "book",cascade = CascadeType.REMOVE)
+	private List<BookAuthorEntity> authors = new ArrayList<>();
 
 	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
 	private List<LoandetailEntity> loandetailEntities  = new ArrayList<>();
@@ -45,11 +42,11 @@ public class BookEntity {
 		this.loandetailEntities = loandetailEntities;
 	}
 
-	public List<AuthorEntity> getAuthors() {
+	public List<BookAuthorEntity> getAuthors() {
 		return authors;
 	}
 
-	public void setAuthors(List<AuthorEntity> authors) {
+	public void setAuthors(List<BookAuthorEntity> authors) {
 		this.authors = authors;
 	}
 
